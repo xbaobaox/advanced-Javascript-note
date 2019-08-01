@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    /* 问题:在js调用函数时传递变量参数时,是值传递还是引用传递还是引用传递？
+    理解1:都是值(基本/地址)传递
+    理解2:可能是值传递,也可能是引用传递(地址值)*/
+    var a = 3;
+    function fn(a) { //这里的a意思是 a=a=3 函数内声明的a是局部变量, 里面的a全是局部变量 跟外面的a没有关系
+        a = a + 1; //函数内的a已经是另外一个 a
+        console.log(a);//4
+    }
+    fn(a);
+    console.log(a);//3
+   
+
+    function fn2(obj) {
+        console.log(obj.name);
+    }
+    var obj = { name: 'tom' };
+    fn2(obj);
+    /* 问题:JS引擎如何管理内存? 
+    1.内存生命周期
+        分配配额空间,得到使用权
+        存储数据,可以进行反复操作
+        释放配额空间
+    2.释放内存
+        局部变量:函数执行完自动释放
+        对象:成为垃圾对象==>垃圾回收器回收*/
+    var b = 3;
+    var o = {};
+    o = null;//这三行代码 变量都没有被释放
+    function fn3() {
+        var c = {};
+    }
+    fn3(); //函数执行完 c是自动释放,c指向的对象是在后面的某个时刻由垃圾回收期回收
+</script>
+
+</html>
