@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+    1.什么是数据?
+    存储在内存中代表特定信息的'元素',本质上是0101...
+    数据的特点:可传递,可运算
+    一切皆数据
+    内存中所有操作的目标:数据
+        算术运算
+        逻辑运算
+        赋值
+        运行函数
+    2.什么是内存? 
+    内存条通电以后用来可存储数据的空间(临时的)
+    只有这个值是对象才会使用它的地址值,像变量的地址值是不使用的.其他时候都是在读内存的内容 
+    一块内存空间会有两个数据:1.内存存数的数据.2.地址值
+    内存的分类:
+    栈:全局变量/局部变量
+    堆:对象
+    3.什么是变量?
+    可变化的量值,由变量名和变量值组成
+    每个变量都对应的一块内存容量,变量名用来查找对应的内存地址,变量值是内存中保存的数据
+    4.内存,数据,变量三者之间的关系
+    内存用来存数数据的空间
+    变量是内存的标识
+     -->
+
+
+</body>
+<script>
+    var age = 18;
+    console.log(age);
+    var obj = { name: 'tom' };
+    function fun() {
+        var obj = { name: 'tom' }; //name不是局部变量
+    }
+    /*  问题: var a = xxx, a内存中到底保存的是什么:
+        xxx是基本数据, 保存的是这个数据
+        xxx是对象, 保存的是对象的地址值
+        xxx是一个变量, 保存的xxx的内存内容(可能是基本数据), 也可能是地址值. */
+    var a;
+    var b = 'abc';
+    a = b;
+    b = {};
+    a = b;
+    /* 关于引用变量赋值问题 
+        2个引用变量指向同一个对象,通过一个变量修改对象内部数据,另一个变量看到的是修改之后的数据
+        2个引用变量只想同一个对象,让其中一个引用变量指向另一个对象,另一种引用变量依然指向前一个对象*/
+    var obj1 = { name: 'tom' };
+    var obj2 = obj1;
+    obj1.name = 'jack';
+    console.log(obj2.name);//'jack'
+    function fn(o) {
+        o.name = 'A'
+    }
+    fn(obj1);
+    console.log(obj2.name);//A;
+
+
+
+
+
+    var arry = [1, 2, 3, 1, 1, 2];
+    function unique(a) {
+        for (var i = 0; i < arry.length; i++) {
+            for (var j = i + 1; j < arry.length; j++) {
+                if (arry[i] == arry[j]) {
+                    arry.splice(j, 1);
+                    j--;
+                }
+            }
+        }
+        return arry;
+    }
+    // console.log(unique(arry));
+
+    function quchong(b) {
+        var newArr = [];
+        var repeat = false;
+        for (var e = 0; e < arry.length; e++) {
+            for (var f = 0; f < newArr.length; f++) {
+                if (arry[e] == newArr[f]) {
+                    repeat = true;
+                    break;
+                };
+            };
+            if (repeat == false) {
+                newArr.push(arry[e]);
+            }
+        }
+        return newArr;
+    }
+    console.log(quchong(arry));
+
+
+</script>
+
+</html>
