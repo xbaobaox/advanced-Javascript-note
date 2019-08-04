@@ -61,7 +61,7 @@
         console.log(typeof b1.b2[2] === 'function');//true
         b1.b2[2](4)//输出4
         console.log(b1.b3()());//输出xbaobaox 
-        
+
         //实例:实例对象
         //类型:类型对象
         function Person(name, age) {//Person是构造函数 类型(类)
@@ -70,7 +70,16 @@
         };
         var p = new Person('tom', 18);//根据类型创造的实例对象
 
-        
+        //工厂函数
+        function createPerson(name, age) {
+            var p = new Object()
+            p.name = name
+            p.age = age
+            return p
+        }
+        var person = createPerson('bob', 18)
+        console.log(typeof person)
+        console.log(person instanceof)
     </script>
 </body>
 
