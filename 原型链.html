@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .text {
+            border: 1px solid red;
+        }
+        img {
+            border: 1px solid red;
+            vertical-align: top;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="img/S$RWA$XPLMD70F~UPGZJUD7.png" alt="">
+    <img src="img/K0}A`GR[)SP3KMVW4ZO}WR3.png" alt="">
+    <img src="img/1.jpg" alt="">
+    <div class="text">
+
+        <p>
+            function Fn() {
+            <br>
+            this.test1 = function () {
+            <br>
+            console.log('test1()') <br>
+            } <br>
+            } <br>
+            console.log(Fn.prototype) <br>
+            Fn.prototype.test2 = function () { <br>
+            console.log('test2()') <br>
+            } <br>
+            var fn = new Fn() <br>
+            fn.test1() <br>
+            fn.test2() <br>
+            console.log(fn.toString()) <br>
+            fn.test3() <br>
+        </p>
+    </div>
+</body>
+<script>
+    /* 
+    1.原型链
+        访问一个对象的属性时,现在自身属性中查找,找到返回
+        如果没有,再沿着__proto__这条链向上查找,找到返回
+        如果最终没找到,返回undefined
+        别名:隐式原型链
+        作用:查找对象的属性(方法)
+        实例对象的隐式原型等于构造函数的显式原型
+     */
+    //内置的函数Object先加载出来
+    console.log(Object.prototype.__proto__)//null
+    console.log(Object.prototype)
+    function Fn() {
+        this.test1 = function () {
+            console.log('test1()')
+        }
+    }
+    console.log(Fn.prototype)
+    Fn.prototype.test2 = function () {
+        console.log('test2()')
+    }
+    var fn = new Fn()
+    fn.test1()
+    fn.test2()
+    console.log(fn.toString())
+    console.log(fn.test3)
+    // fn.test3() 
+    console.log(Object.prototype.constructor)
+
+    //这两个是相等的
+    function Foo() { }
+    var Foo = new Function() 
+    //所有函数的__proto__都是一样的
+    Function=new Function()
+</script>
+
+</html>
