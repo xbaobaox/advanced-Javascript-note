@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <img src="img/QQ图片20190810213255.png" alt="">
+</body>
+<script>
+    /* 
+    1.在全局代码执行前,JS引擎会创建一个栈来储存管理所有的执行上下文对象
+    2.在全局执行上下文(window)确定后,将其添加到栈中(压栈)
+    3.在函数执行上下文创建后,将其添加到占中(压栈)
+    4.在当前函数执行完后,将栈顶的对象移出(出栈)
+    5.当所有的代码执行完后,栈中只剩下window
+     */
+    var a = 10
+    var bar = function (x) {
+        var b = 5
+        foo(x + b)
+    }
+    var foo = function (y) {
+        var c = 5
+        console.log(a + c + y)
+    }
+    bar(10)//此时页面创建了 window bar foo三个执行上下文
+    // bar(10)//此时页面创建了 window bar foo bar foo5个执行上下文
+
+
+    //依次输出了什么:
+    //整个过程中产生了几个执行上下文? 总共5个 f(4)虽然被退出 但也是执行过的
+    console.log('global begin:' + i)//undefined
+    var i = 1
+    foo(1)
+    function foo(i) {
+        if (i == 4) {
+            return;
+        }
+        console.log('foo() begin:' + i)//1 2 3 
+        foo(i + 1) //递归调用:在函数内部调用自己  2
+        console.log('foo() end:' + i) //3 2 1
+    }
+    console.log('global end:' + i)//1
+
+
+</script>
+
+</html>
