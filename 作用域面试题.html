@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var x = 10
+    function fn() {
+        console.log(x)//10
+    }
+    function show(f) {
+        var x = 20
+        f()//  10
+    }
+    show(fn)
+    /* -------------------------------------- */
+    var a = function () {
+        console.log(a)
+    }
+    a()
+
+    var obj = {
+        b: function () {
+            console.log(b)
+            //console.log(this.b)
+        }
+    }
+    obj.b() //报错 因为b是obj对象的属性 应写为obj.b 或者 this.b(在函数里)
+</script>
+
+</html>
