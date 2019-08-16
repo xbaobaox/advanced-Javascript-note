@@ -1,18 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
-</head>
+  </head>
 
-<body>
-
-</body>
-<script src="myModule.js"></script>
-<script>
+  <body></body>
+  <script src="myModule.js"></script>
+  <script src="myModule2.js"></script>
+  <script>
     /* 
     闭包的应用:定义JS模块
         具有特定功能的JS文件
@@ -20,8 +18,11 @@
         只向外暴漏一个包含n个方法的对象或函数
         模块的使用者,只需要通过模块暴露的对象调用方法来实现对应的功能
     */
-    var fn=myModule()
-    fn()
-</script>
-
+    var module = myModule();
+    // fn()
+    module.fn1(); //myModule().fn1() return的fn1 fn2 所以可以这样表示 module.fn1()
+    module.fn2();
+    myModule2.fn1();
+    myModule2.fn2();
+  </script>
 </html>
