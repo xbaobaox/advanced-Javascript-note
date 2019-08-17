@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    /* 题目一 */
+    var name = 'The window'
+    var object = {
+        name: "My Object",
+        getNameFunc: function () {
+            return function () {
+                return this.name
+            }
+        }
+    }
+    // alert(object.getNameFunc()()) //the window 究根结底执行是函数体 this指向的是函数体也就是window 拿的全局变量
+
+    var name2 = 'The Window'
+    var object2 = {
+        name2: 'My Object',
+        getNameFunc: function () {
+            var that = this //此处相当于劫持了this的定义 定义为Object2 
+            return function () {
+                return that.name2
+            }
+        }
+    }
+    // alert(object2.getNameFunc()()) //my object
+    /* 题目二 */
+    function fun(n, o) {//0,0
+        console.log(o)
+        return {
+            fun: function (m) {
+                return fun(m, n);
+            }
+        };
+    }
+    var a = fun(0); a.fun(1); a.fun(2); a.fun(3);//undefined,?,?,? 0 0 0
+    var b = fun(0).fun(1).fun(2).fun(3);//undefined,?,?,? 0 1 2
+    var c = fun(0).fun(1); c.fun(2); c.fun(3);//undefined,?,?,? 0 1 1
+//问:三行a,b,c的输出分别是什么？
+</script>
+
+</html>
