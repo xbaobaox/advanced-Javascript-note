@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    /* 
+    1.缺点
+        函数执行完后,函数内的局部变量没有释放,占用内存时间会变长
+        容易造成内存泄露
+    2.泄露
+        能不用闭包就不用
+        及时释放
+    */
+    /* 
+    1.内存溢出
+         一种程序运行出现的错误
+         当程序运行需要的内存超过了剩余的内存时,就抛出内存溢出的错误
+     2.内存泄露
+         占用的内存没有及时释放
+         内存泄露积累多了就容易导致内存溢出
+         常见的内存泄露:
+            意外的全局变量 
+            
+            没有及时清理的计时器或回调函数
+            闭包
+    */
+    function fn1() {
+        var arr = new Array[10000]
+        function fn2() {
+            console.log(arr.length)
+        }
+        return fn2
+    }
+    var f = fn1()
+    f()
+    f = null //解决方法:让内部函数成为垃圾对象==>回收闭包
+</script>
+
+</html>
