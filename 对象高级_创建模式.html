@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+</head>
+
+<body></body>
+<script>
+    /* 
+    方式一:Object构造函数模式
+        方法:先创建空Object对象,再动态添加属性/方法
+        适用场景:起始时不确定对象内部数据
+        问题:语句太多
+     */
+    var p = new Object()
+    p.name = "tom"
+    p.age = 12
+    p.setName = function (name) {
+        this.name = name
+    }
+    /*
+    方式二:对象字面量模式
+        方法:适用{}创建对象,同事指定属性/方法
+        适用场景:起始时对象内部数据是确定的
+        问题:如果创建多个对象,有重复代码
+     */
+    var p = {
+        name: 'tom',
+        age: 12,
+        setName: function (name) {
+            this.name = name
+        }
+    }
+    /* 
+    方式三:工厂函数
+        方法:通过工厂函数动态创建对象并返回
+        适用场景:需要创建多个对象
+        问题:对象没有一个具体的类型,都是Object类型
+    */
+    function createPerson(name, age) {
+        var obj = {
+            name: name,
+            age: age,
+            setName=function (name) {
+                this.name = name
+            }
+        }
+        return obj
+    }
+    var p1 = createPerson('tom', 12)
+    var p2 = createPerson('bob', 13)
+    /* 
+    方式四:自定义构造函数
+        方法:自定义构造函数,通过new创建对象
+        适用场景:需要创建多个类型确定的对象
+        问题:每个对象都有相同的数据,浪费内存  
+    */
+    function Person(name, age) {
+        this.name = name
+        this.age = age
+        // this.setName = function (name) {
+        //     this.name = name
+        // } 这个不能放在构造函数里面 每次创建一个实例对象就占用一次内存,太占用内存空间,要用原型
+    }
+    Person.prototype.setName = function (name) {
+        this.name = name
+    }
+    var p1 = new Person(alice, 13)
+    p1.setName('fuck')
+</script>
+
+</html>
