@@ -9,7 +9,7 @@
 </head>
 
 <body>
-<img src="img\QQ图片20190819214650.png" alt="">
+    <img src="img\QQ图片20190819214650.png" alt="">
 </body>
 <script>
     /*
@@ -37,13 +37,17 @@
         this.subProp = 'Sub property'
     }
     //子类型的原型为父类型的一个实例对象
-    Sub.prototype =Supper.prototype
+    Sub.prototype = new Supper()
+    //让子类型的原型的constructor指向子类型
+    Sub.prototype.constructor = Sub
     Sub.prototype.showSubProp = function () {
         console.log(this.subProp)
     }
     var sub = new Sub()
     sub.showSupperProp()
     sub.showSubProp()
+    console.log(sub.constructor)//是supper
+
 </script>
 
 </html>
