@@ -9,12 +9,12 @@
 </head>
 
 <body>
-
+<img src="img\QQ图片20190819214650.png" alt="">
 </body>
 <script>
     /*
     方式一:原型链继承
-        1.套路
+        1.套路    
             1.定义父类型构造函数
             2.给父类型的原型添加方法
             3.定义子类型的构造函数
@@ -25,21 +25,25 @@
         2.关键
             1.子类型的原型为父类型的一个实例对象
      */
-//父类型
-function Supper() {
-    this.supProp='supper property'
-}
-Supper.prototype.showSupperProp=function(){
-    console.log(this.supProp)
-}
-//子类型
-function Sub() {
-    this.subProp='Sub property'
-}
-Sub.prototype.showSubProp=function(){
-    console.log(this.subProp)
-}
-var sub=new Sub()
+    //父类型
+    function Supper() {
+        this.supProp = 'supper property'
+    }
+    Supper.prototype.showSupperProp = function () {
+        console.log(this.supProp)
+    }
+    //子类型
+    function Sub() {
+        this.subProp = 'Sub property'
+    }
+    //子类型的原型为父类型的一个实例对象
+    Sub.prototype =Supper.prototype
+    Sub.prototype.showSubProp = function () {
+        console.log(this.subProp)
+    }
+    var sub = new Sub()
+    sub.showSupperProp()
+    sub.showSubProp()
 </script>
 
 </html>
