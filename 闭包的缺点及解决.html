@@ -44,19 +44,19 @@
             闭包
     */
     //内存溢出
-    var obj={}
-    for(var i=0;i<100000;i++){
-        obj[i]=new Array(1000000)
+    var obj = {}
+    for (var i = 0; i < 100000; i++) {
+        obj[i] = new Array(1000000)
     }
     //内存泄露
     //意外的全局变量
     function fn() {
-        a=3 //这个是全局变量
+        a = 3 //这个是全局变量
         console.log(a)
     }
-    var time=setInterval(function(){
+    var time = setInterval(function () {
         console.log('1')
-    },1000)
+    }, 1000)
     clearInterval(time)
 </script>
 
