@@ -34,6 +34,12 @@
     }
     var s = new Student('tom', 20, 14000)
     console.log(s.name, s.age, s.price)
+    /*
+    new一个对象背后做了什么?
+        创建一个空对象
+        给对象设置__proto__,值为构造函数对象的prototype属性值
+        执行构造函数体(给对象添加属性/方法)
+    */
 </script>
 
 </html>
