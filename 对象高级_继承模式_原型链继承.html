@@ -26,8 +26,9 @@
             1.子类型的原型为父类型的一个实例对象
      */
     //父类型
-    function Supper() {
-        this.supProp = 'supper property'
+    function Supper(supProp) {
+        // this.supProp = 'supper property'
+        this.supProp=supProp
     }
     Supper.prototype.showSupperProp = function () {
         console.log(this.supProp)
